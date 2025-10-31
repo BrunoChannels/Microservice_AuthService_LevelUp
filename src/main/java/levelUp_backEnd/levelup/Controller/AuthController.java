@@ -7,7 +7,8 @@ import levelUp_backEnd.levelup.Web.Mappers;
 import levelUp_backEnd.levelup.Dto.Dtos.LoginRequest;
 import levelUp_backEnd.levelup.Dto.Dtos.RegisterRequest;
 import levelUp_backEnd.levelup.Dto.Dtos.UserResponse;
-import jakarta.validation.Valid;
+
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,13 +23,13 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public UserResponse login(@Valid @RequestBody LoginRequest req) {
+    public UserResponse login(@Validated @RequestBody LoginRequest req) {
         User u = userService.authenticate(req.email, req.password);
         return Mappers.toUserResponse(u);
     }
 
     @PostMapping("/register")
-    public UserResponse register(@Valid @RequestBody RegisterRequest req) {
+    public UserResponse register(@Validated @RequestBody RegisterRequest req) {
         User u = userService.register(req.name, req.email, req.password);
         return Mappers.toUserResponse(u);
     }

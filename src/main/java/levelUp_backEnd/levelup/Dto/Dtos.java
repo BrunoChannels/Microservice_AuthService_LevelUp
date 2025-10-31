@@ -1,9 +1,8 @@
-
 package levelUp_backEnd.levelup.Dto;
 
-import levelUp_backEnd.levelup.Model.Preferences;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import levelUp_backEnd.levelup.Model.Preferences;
 
 public class Dtos {
 

@@ -6,7 +6,8 @@ import levelUp_backEnd.levelup.Service.UserService;
 import levelUp_backEnd.levelup.Web.Mappers;  
 import levelUp_backEnd.levelup.Dto.Dtos;
 import levelUp_backEnd.levelup.Dto.Dtos.UserResponse;
-import jakarta.validation.Valid;
+
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,7 +29,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public UserResponse update(@PathVariable Long id, @Valid @RequestBody Dtos.UpdateProfileRequest req) {
+    public UserResponse update(@PathVariable Long id, @Validated @RequestBody Dtos.UpdateProfileRequest req) {
         User u = userService.update(id, req);
         return Mappers.toUserResponse(u);
     }
